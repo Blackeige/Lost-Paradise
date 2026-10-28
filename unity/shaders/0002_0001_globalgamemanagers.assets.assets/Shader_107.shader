@@ -1,0 +1,12 @@
+//////////////////////////////////////////
+//
+// NOTE: This is *not* a valid shader file
+//
+///////////////////////////////////////////
+Shader "Hidden/PostProcessing/Debug/Waveform" {
+Properties {
+
+}
+SubShader {
+}
+}

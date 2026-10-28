@@ -1,0 +1,656 @@
+//////////////////////////////////////////
+//
+// NOTE: This is *not* a valid shader file
+//
+///////////////////////////////////////////
+Shader "HDRP/LayeredLit" {
+Properties {
+
+_BaseColor0 ("BaseColor0", Color) = (1,1,1,1)
+
+_BaseColor1 ("BaseColor1", Color) = (1,1,1,1)
+
+_BaseColor2 ("BaseColor2", Color) = (1,1,1,1)
+
+_BaseColor3 ("BaseColor3", Color) = (1,1,1,1)
+
+_BaseColorMap0 ("BaseColorMap0", 2D) = "white" { }
+
+_BaseColorMap1 ("BaseColorMap1", 2D) = "white" { }
+
+_BaseColorMap2 ("BaseColorMap2", 2D) = "white" { }
+
+_BaseColorMap3 ("BaseColorMap3", 2D) = "white" { }
+
+_Metallic0 ("Metallic0", Range(0, 1)) = 0.0
+
+_Metallic1 ("Metallic1", Range(0, 1)) = 0.0
+
+_Metallic2 ("Metallic2", Range(0, 1)) = 0.0
+
+_Metallic3 ("Metallic3", Range(0, 1)) = 0.0
+
+_MetallicRemapMin0 ("MetallicRemapMin0", Range(0, 1)) = 0.0
+
+_MetallicRemapMin1 ("MetallicRemapMin1", Range(0, 1)) = 0.0
+
+_MetallicRemapMin2 ("MetallicRemapMin2", Range(0, 1)) = 0.0
+
+_MetallicRemapMin3 ("MetallicRemapMin3", Range(0, 1)) = 0.0
+
+_MetallicRemapMax0 ("MetallicRemapMax0", Range(0, 1)) = 1.0
+
+_MetallicRemapMax1 ("MetallicRemapMax1", Range(0, 1)) = 1.0
+
+_MetallicRemapMax2 ("MetallicRemapMax2", Range(0, 1)) = 1.0
+
+_MetallicRemapMax3 ("MetallicRemapMax3", Range(0, 1)) = 1.0
+
+_Smoothness0 ("Smoothness0", Range(0, 1)) = 0.5
+
+_Smoothness1 ("Smoothness1", Range(0, 1)) = 0.5
+
+_Smoothness2 ("Smoothness2", Range(0, 1)) = 0.5
+
+_Smoothness3 ("Smoothness3", Range(0, 1)) = 0.5
+
+_SmoothnessRemapMin0 ("SmoothnessRemapMin0", Range(0, 1)) = 0.0
+
+_SmoothnessRemapMin1 ("SmoothnessRemapMin1", Range(0, 1)) = 0.0
+
+_SmoothnessRemapMin2 ("SmoothnessRemapMin2", Range(0, 1)) = 0.0
+
+_SmoothnessRemapMin3 ("SmoothnessRemapMin3", Range(0, 1)) = 0.0
+
+_SmoothnessRemapMax0 ("SmoothnessRemapMax0", Range(0, 1)) = 1.0
+
+_SmoothnessRemapMax1 ("SmoothnessRemapMax1", Range(0, 1)) = 1.0
+
+_SmoothnessRemapMax2 ("SmoothnessRemapMax2", Range(0, 1)) = 1.0
+
+_SmoothnessRemapMax3 ("SmoothnessRemapMax3", Range(0, 1)) = 1.0
+
+_AlphaRemapMin0 ("AlphaRemapMin0", Range(0, 1)) = 0.0
+
+_AlphaRemapMin1 ("AlphaRemapMin1", Range(0, 1)) = 0.0
+
+_AlphaRemapMin2 ("AlphaRemapMin2", Range(0, 1)) = 0.0
+
+_AlphaRemapMin3 ("AlphaRemapMin3", Range(0, 1)) = 0.0
+
+_AlphaRemapMax0 ("AlphaRemapMax0", Range(0, 1)) = 1.0
+
+_AlphaRemapMax1 ("AlphaRemapMax1", Range(0, 1)) = 1.0
+
+_AlphaRemapMax2 ("AlphaRemapMax2", Range(0, 1)) = 1.0
+
+_AlphaRemapMax3 ("AlphaRemapMax3", Range(0, 1)) = 1.0
+
+_AORemapMin0 ("AORemapMin0", Range(0, 1)) = 0.0
+
+_AORemapMin1 ("AORemapMin1", Range(0, 1)) = 0.0
+
+_AORemapMin2 ("AORemapMin2", Range(0, 1)) = 0.0
+
+_AORemapMin3 ("AORemapMin3", Range(0, 1)) = 0.0
+
+_AORemapMax0 ("AORemapMax0", Range(0, 1)) = 1.0
+
+_AORemapMax1 ("AORemapMax1", Range(0, 1)) = 1.0
+
+_AORemapMax2 ("AORemapMax2", Range(0, 1)) = 1.0
+
+_AORemapMax3 ("AORemapMax3", Range(0, 1)) = 1.0
+
+_MaskMap0 ("MaskMap0", 2D) = "white" { }
+
+_MaskMap1 ("MaskMap1", 2D) = "white" { }
+
+_MaskMap2 ("MaskMap2", 2D) = "white" { }
+
+_MaskMap3 ("MaskMap3", 2D) = "white" { }
+
+_NormalMap0 ("NormalMap0", 2D) = "bump" { }
+
+_NormalMap1 ("NormalMap1", 2D) = "bump" { }
+
+_NormalMap2 ("NormalMap2", 2D) = "bump" { }
+
+_NormalMap3 ("NormalMap3", 2D) = "bump" { }
+
+_NormalMapOS0 ("NormalMapOS0", 2D) = "white" { }
+
+_NormalMapOS1 ("NormalMapOS1", 2D) = "white" { }
+
+_NormalMapOS2 ("NormalMapOS2", 2D) = "white" { }
+
+_NormalMapOS3 ("NormalMapOS3", 2D) = "white" { }
+
+_NormalScale0 ("_NormalScale0", Range(0, 2)) = 1.0
+
+_NormalScale1 ("_NormalScale1", Range(0, 2)) = 1.0
+
+_NormalScale2 ("_NormalScale2", Range(0, 2)) = 1.0
+
+_NormalScale3 ("_NormalScale3", Range(0, 2)) = 1.0
+
+_BentNormalMap0 ("BentNormalMap0", 2D) = "bump" { }
+
+_BentNormalMap1 ("BentNormalMap1", 2D) = "bump" { }
+
+_BentNormalMap2 ("BentNormalMap2", 2D) = "bump" { }
+
+_BentNormalMap3 ("BentNormalMap3", 2D) = "bump" { }
+
+_BentNormalMapOS0 ("BentNormalMapOS0", 2D) = "white" { }
+
+_BentNormalMapOS1 ("BentNormalMapOS1", 2D) = "white" { }
+
+_BentNormalMapOS2 ("BentNormalMapOS2", 2D) = "white" { }
+
+_BentNormalMapOS3 ("BentNormalMapOS3", 2D) = "white" { }
+
+_HeightMap0 ("HeightMap0", 2D) = "black" { }
+
+_HeightMap1 ("HeightMap1", 2D) = "black" { }
+
+_HeightMap2 ("HeightMap2", 2D) = "black" { }
+
+_HeightMap3 ("HeightMap3", 2D) = "black" { }
+
+_HeightAmplitude0 ("Height Scale0", Float) = 0.019999999552965164
+
+_HeightAmplitude1 ("Height Scale1", Float) = 0.019999999552965164
+
+_HeightAmplitude2 ("Height Scale2", Float) = 0.019999999552965164
+
+_HeightAmplitude3 ("Height Scale3", Float) = 0.019999999552965164
+
+_HeightCenter0 ("Height Bias0", Range(0, 1)) = 0.5
+
+_HeightCenter1 ("Height Bias1", Range(0, 1)) = 0.5
+
+_HeightCenter2 ("Height Bias2", Range(0, 1)) = 0.5
+
+_HeightCenter3 ("Height Bias3", Range(0, 1)) = 0.5
+
+[Enum(MinMax, 0, Amplitude, 1)] _HeightMapParametrization0 ("Heightmap Parametrization0", Float) = 0.0
+
+[Enum(MinMax, 0, Amplitude, 1)] _HeightMapParametrization1 ("Heightmap Parametrization1", Float) = 0.0
+
+[Enum(MinMax, 0, Amplitude, 1)] _HeightMapParametrization2 ("Heightmap Parametrization2", Float) = 0.0
+
+[Enum(MinMax, 0, Amplitude, 1)] _HeightMapParametrization3 ("Heightmap Parametrization3", Float) = 0.0
+
+_HeightOffset0 ("Height Offset0", Float) = 0.0
+
+_HeightOffset1 ("Height Offset1", Float) = 0.0
+
+_HeightOffset2 ("Height Offset2", Float) = 0.0
+
+_HeightOffset3 ("Height Offset3", Float) = 0.0
+
+_HeightMin0 ("Height Min0", Float) = -1.0
+
+_HeightMin1 ("Height Min1", Float) = -1.0
+
+_HeightMin2 ("Height Min2", Float) = -1.0
+
+_HeightMin3 ("Height Min3", Float) = -1.0
+
+_HeightMax0 ("Height Max0", Float) = 1.0
+
+_HeightMax1 ("Height Max1", Float) = 1.0
+
+_HeightMax2 ("Height Max2", Float) = 1.0
+
+_HeightMax3 ("Height Max3", Float) = 1.0
+
+_HeightTessAmplitude0 ("Amplitude0", Float) = 2.0
+
+_HeightTessAmplitude1 ("Amplitude1", Float) = 2.0
+
+_HeightTessAmplitude2 ("Amplitude2", Float) = 2.0
+
+_HeightTessAmplitude3 ("Amplitude3", Float) = 2.0
+
+_HeightTessCenter0 ("Height Bias0", Range(0, 1)) = 0.5
+
+_HeightTessCenter1 ("Height Bias1", Range(0, 1)) = 0.5
+
+_HeightTessCenter2 ("Height Bias2", Range(0, 1)) = 0.5
+
+_HeightTessCenter3 ("Height Bias3", Range(0, 1)) = 0.5
+
+_HeightPoMAmplitude0 ("Height Amplitude0", Float) = 2.0
+
+_HeightPoMAmplitude1 ("Height Amplitude1", Float) = 2.0
+
+_HeightPoMAmplitude2 ("Height Amplitude2", Float) = 2.0
+
+_HeightPoMAmplitude3 ("Height Amplitude3", Float) = 2.0
+
+_DetailMap0 ("DetailMap0", 2D) = "linearGrey" { }
+
+_DetailMap1 ("DetailMap1", 2D) = "linearGrey" { }
+
+_DetailMap2 ("DetailMap2", 2D) = "linearGrey" { }
+
+_DetailMap3 ("DetailMap3", 2D) = "linearGrey" { }
+
+_DetailAlbedoScale0 ("_DetailAlbedoScale0", Range(0, 2)) = 1.0
+
+_DetailAlbedoScale1 ("_DetailAlbedoScale1", Range(0, 2)) = 1.0
+
+_DetailAlbedoScale2 ("_DetailAlbedoScale2", Range(0, 2)) = 1.0
+
+_DetailAlbedoScale3 ("_DetailAlbedoScale3", Range(0, 2)) = 1.0
+
+_DetailNormalScale0 ("_DetailNormalScale0", Range(0, 2)) = 1.0
+
+_DetailNormalScale1 ("_DetailNormalScale1", Range(0, 2)) = 1.0
+
+_DetailNormalScale2 ("_DetailNormalScale2", Range(0, 2)) = 1.0
+
+_DetailNormalScale3 ("_DetailNormalScale3", Range(0, 2)) = 1.0
+
+_DetailSmoothnessScale0 ("_DetailSmoothnessScale0", Range(0, 2)) = 1.0
+
+_DetailSmoothnessScale1 ("_DetailSmoothnessScale1", Range(0, 2)) = 1.0
+
+_DetailSmoothnessScale2 ("_DetailSmoothnessScale2", Range(0, 2)) = 1.0
+
+_DetailSmoothnessScale3 ("_DetailSmoothnessScale3", Range(0, 2)) = 1.0
+
+[Enum(TangentSpace, 0, ObjectSpace, 1)] _NormalMapSpace0 ("NormalMap space", Float) = 0.0
+
+[Enum(TangentSpace, 0, ObjectSpace, 1)] _NormalMapSpace1 ("NormalMap space", Float) = 0.0
+
+[Enum(TangentSpace, 0, ObjectSpace, 1)] _NormalMapSpace2 ("NormalMap space", Float) = 0.0
+
+[Enum(TangentSpace, 0, ObjectSpace, 1)] _NormalMapSpace3 ("NormalMap space", Float) = 0.0
+
+_DiffusionProfile0 ("Obsolete, kept for migration purpose", Float) = 0.0
+
+_DiffusionProfile1 ("Obsolete, kept for migration purpose", Float) = 0.0
+
+_DiffusionProfile2 ("Obsolete, kept for migration purpose", Float) = 0.0
+
+_DiffusionProfile3 ("Obsolete, kept for migration purpose", Float) = 0.0
+
+_DiffusionProfileAsset0 ("Diffusion Profile Asset0", Vector) = (0,0,0,0)
+
+_DiffusionProfileHash0 ("Diffusion Profile Hash0", Float) = 0.0
+
+_DiffusionProfileAsset1 ("Diffusion Profile Asset1", Vector) = (0,0,0,0)
+
+_DiffusionProfileHash1 ("Diffusion Profile Hash1", Float) = 0.0
+
+_DiffusionProfileAsset2 ("Diffusion Profile Asset2", Vector) = (0,0,0,0)
+
+_DiffusionProfileHash2 ("Diffusion Profile Hash2", Float) = 0.0
+
+_DiffusionProfileAsset3 ("Diffusion Profile Asset3", Vector) = (0,0,0,0)
+
+_DiffusionProfileHash3 ("Diffusion Profile Hash3", Float) = 0.0
+
+_SubsurfaceMask0 ("Subsurface Mask0", Range(0, 1)) = 1.0
+
+_SubsurfaceMask1 ("Subsurface Mask1", Range(0, 1)) = 1.0
+
+_SubsurfaceMask2 ("Subsurface Mask2", Range(0, 1)) = 1.0
+
+_SubsurfaceMask3 ("Subsurface Mask3", Range(0, 1)) = 1.0
+
+_SubsurfaceMaskMap0 ("Subsurface Mask Map0", 2D) = "white" { }
+
+_SubsurfaceMaskMap1 ("Subsurface Mask Map1", 2D) = "white" { }
+
+_SubsurfaceMaskMap2 ("Subsurface Mask Map2", 2D) = "white" { }
+
+_SubsurfaceMaskMap3 ("Subsurface Mask Map3", 2D) = "white" { }
+
+_TransmissionMask0 ("Transmission Mask0", Range(0, 1)) = 1.0
+
+_TransmissionMask1 ("Transmission Mask1", Range(0, 1)) = 1.0
+
+_TransmissionMask2 ("Transmission Mask2", Range(0, 1)) = 1.0
+
+_TransmissionMask3 ("Transmission Mask3", Range(0, 1)) = 1.0
+
+_TransmissionMaskMap0 ("Transmission Mask Map0", 2D) = "white" { }
+
+_TransmissionMaskMap1 ("Transmission Mask Map1", 2D) = "white" { }
+
+_TransmissionMaskMap2 ("Transmission Mask Map2", 2D) = "white" { }
+
+_TransmissionMaskMap3 ("Transmission Mask Map3", 2D) = "white" { }
+
+_Thickness0 ("Thickness", Float) = 1.0
+
+_Thickness1 ("Thickness", Float) = 1.0
+
+_Thickness2 ("Thickness", Float) = 1.0
+
+_Thickness3 ("Thickness", Float) = 1.0
+
+_ThicknessMap0 ("Thickness Map", 2D) = "white" { }
+
+_ThicknessMap1 ("Thickness Map", 2D) = "white" { }
+
+_ThicknessMap2 ("Thickness Map", 2D) = "white" { }
+
+_ThicknessMap3 ("Thickness Map", 2D) = "white" { }
+
+_ThicknessRemap0 ("Thickness Remap", Vector) = (0,1,0,0)
+
+_ThicknessRemap1 ("Thickness Remap", Vector) = (0,1,0,0)
+
+_ThicknessRemap2 ("Thickness Remap", Vector) = (0,1,0,0)
+
+_ThicknessRemap3 ("Thickness Remap", Vector) = (0,1,0,0)
+
+_LayerMaskMap ("LayerMaskMap", 2D) = "white" { }
+
+_LayerInfluenceMaskMap ("LayerInfluenceMaskMap", 2D) = "white" { }
+
+[ToggleUI] _UseHeightBasedBlend ("UseHeightBasedBlend", Float) = 0.0
+
+_HeightTransition ("Height Transition", Range(0, 1)) = 0.0
+
+[ToggleUI] _UseDensityMode ("Use Density mode", Float) = 0.0
+
+[ToggleUI] _UseMainLayerInfluence ("UseMainLayerInfluence", Float) = 0.0
+
+_InheritBaseNormal1 ("_InheritBaseNormal1", Range(0, 1)) = 0.0
+
+_InheritBaseNormal2 ("_InheritBaseNormal2", Range(0, 1)) = 0.0
+
+_InheritBaseNormal3 ("_InheritBaseNormal3", Range(0, 1)) = 0.0
+
+_InheritBaseHeight1 ("_InheritBaseHeight1", Range(0, 1)) = 0.0
+
+_InheritBaseHeight2 ("_InheritBaseHeight2", Range(0, 1)) = 0.0
+
+_InheritBaseHeight3 ("_InheritBaseHeight3", Range(0, 1)) = 0.0
+
+_InheritBaseColor1 ("_InheritBaseColor1", Range(0, 1)) = 0.0
+
+_InheritBaseColor2 ("_InheritBaseColor2", Range(0, 1)) = 0.0
+
+_InheritBaseColor3 ("_InheritBaseColor3", Range(0, 1)) = 0.0
+
+[ToggleUI] _OpacityAsDensity0 ("_OpacityAsDensity0", Float) = 0.0
+
+[ToggleUI] _OpacityAsDensity1 ("_OpacityAsDensity1", Float) = 0.0
+
+[ToggleUI] _OpacityAsDensity2 ("_OpacityAsDensity2", Float) = 0.0
+
+[ToggleUI] _OpacityAsDensity3 ("_OpacityAsDensity3", Float) = 0.0
+
+_LayerCount ("_LayerCount", Float) = 2.0
+
+[Enum(None, 0, Multiply, 1, AddSubstract, 2)] _VertexColorMode ("Vertex color mode", Float) = 0.0
+
+[ToggleUI] _ObjectScaleAffectTile ("_ObjectScaleAffectTile", Float) = 0.0
+
+[Enum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Planar, 4, Triplanar, 5)] _UVBlendMask ("UV Set for blendMask", Float) = 0.0
+
+_UVMappingMaskBlendMask ("_UVMappingMaskBlendMask", Color) = (1,0,0,0)
+
+_TexWorldScaleBlendMask ("Tiling", Float) = 1.0
+
+[Enum(Off, 0, From Ambient Occlusion, 1, From AO and Bent Normals, 2)] _SpecularOcclusionMode ("Specular Occlusion Mode", Float) = 1.0
+
+_EmissiveColor ("EmissiveColor", Color) = (0,0,0,1)
+
+_EmissiveColorLDR ("EmissiveColor LDR", Color) = (0,0,0,1)
+
+_EmissiveColorMap ("EmissiveColorMap", 2D) = "white" { }
+
+[ToggleUI] _AlbedoAffectEmissive ("Albedo Affect Emissive", Float) = 0.0
+
+_EmissiveIntensityUnit ("Emissive Mode", Float) = 0.0
+
+[ToggleUI] _UseEmissiveIntensity ("Use Emissive Intensity", Float) = 0.0
+
+_EmissiveIntensity ("Emissive Intensity", Float) = 1.0
+
+_EmissiveExposureWeight ("Emissive Pre Exposure", Range(0, 1)) = 1.0
+
+[ToggleUI] _UseShadowThreshold ("_UseShadowThreshold", Float) = 0.0
+
+[ToggleUI] _AlphaCutoffEnable ("Alpha Cutoff Enable", Float) = 0.0
+
+_AlphaCutoff ("Alpha Cutoff", Range(0, 1)) = 0.5
+
+_AlphaCutoffShadow ("_AlphaCutoffShadow", Range(0, 1)) = 0.5
+
+_AlphaCutoffPrepass ("_AlphaCutoffPrepass", Range(0, 1)) = 0.5
+
+_AlphaCutoffPostpass ("_AlphaCutoffPostpass", Range(0, 1)) = 0.5
+
+_TransparentSortPriority ("_TransparentSortPriority", Float) = 0.0
+
+[Enum(None, 0, Planar, 1, Sphere, 2, Thin, 3)] _RefractionModel ("Refraction Model", Float) = 0.0
+
+_Ior ("Index Of Refraction", Range(1, 2.5)) = 1.5
+
+_TransmittanceColor ("Transmittance Color", Color) = (1,1,1,1)
+
+_TransmittanceColorMap ("TransmittanceColorMap", 2D) = "white" { }
+
+_ATDistance ("Transmittance Absorption Distance", Float) = 1.0
+
+[ToggleUI] _TransparentWritingMotionVec ("_TransparentWritingMotionVec", Float) = 0.0
+
+_StencilRef ("_StencilRef", Float) = 0.0
+
+_StencilWriteMask ("_StencilWriteMask", Float) = 3.0
+
+_StencilRefGBuffer ("_StencilRefGBuffer", Float) = 2.0
+
+_StencilWriteMaskGBuffer ("_StencilWriteMaskGBuffer", Float) = 3.0
+
+_StencilRefDepth ("_StencilRefDepth", Float) = 0.0
+
+_StencilWriteMaskDepth ("_StencilWriteMaskDepth", Float) = 8.0
+
+_StencilRefMV ("_StencilRefMV", Float) = 32.0
+
+_StencilWriteMaskMV ("_StencilWriteMaskMV", Float) = 32.0
+
+_SurfaceType ("__surfacetype", Float) = 0.0
+
+_BlendMode ("__blendmode", Float) = 0.0
+
+_SrcBlend ("__src", Float) = 1.0
+
+_DstBlend ("__dst", Float) = 0.0
+
+_AlphaSrcBlend ("__alphaSrc", Float) = 1.0
+
+_AlphaDstBlend ("__alphaDst", Float) = 0.0
+
+[ToggleUI] _ZWrite ("__zw", Float) = 1.0
+
+[ToggleUI] _TransparentZWrite ("_TransparentZWrite", Float) = 0.0
+
+_CullMode ("__cullmode", Float) = 2.0
+
+[Enum(UnityEngine.Rendering.HighDefinition.TransparentCullMode)] _TransparentCullMode ("_TransparentCullMode", Float) = 2.0
+
+[Enum(UnityEngine.Rendering.HighDefinition.OpaqueCullMode)] _OpaqueCullMode ("_OpaqueCullMode", Float) = 2.0
+
+_ZTestDepthEqualForOpaque ("_ZTestDepthEqualForOpaque", Float) = 4.0
+
+_ZTestGBuffer ("_ZTestGBuffer", Float) = 4.0
+
+[Enum(UnityEngine.Rendering.CompareFunction)] _ZTestTransparent ("Transparent ZTest", Float) = 4.0
+
+[ToggleUI] _EnableFogOnTransparent ("Enable Fog", Float) = 1.0
+
+[ToggleUI] _EnableBlendModePreserveSpecularLighting ("Enable Blend Mode Preserve Specular Lighting", Float) = 1.0
+
+[ToggleUI] _DoubleSidedEnable ("Double sided enable", Float) = 0.0
+
+[Enum(Flip, 0, Mirror, 1, None, 2)] _DoubleSidedNormalMode ("Double sided normal mode", Float) = 1.0
+
+_DoubleSidedConstants ("_DoubleSidedConstants", Vector) = (1,1,-1,0)
+
+[Enum(Auto, 0, On, 1, Off, 2)] _DoubleSidedGIMode ("Double sided GI mode", Float) = 0.0
+
+[Enum(Subsurface Scattering, 0, Standard, 1, Translucent, 5)] _MaterialID ("MaterialId", Float) = 1.0
+
+[ToggleUI] _TransmissionEnable ("_TransmissionEnable", Float) = 1.0
+
+_DisplacementMode ("DisplacementMode", Float) = 0.0
+
+[ToggleUI] _DisplacementLockObjectScale ("displacement lock object scale", Float) = 1.0
+
+[ToggleUI] _DisplacementLockTilingScale ("displacement lock tiling scale", Float) = 1.0
+
+[ToggleUI] _DepthOffsetEnable ("Depth Offset View space", Float) = 0.0
+
+[ToggleUI] _EnableGeometricSpecularAA ("EnableGeometricSpecularAA", Float) = 0.0
+
+_SpecularAAScreenSpaceVariance ("SpecularAAScreenSpaceVariance", Range(0, 1)) = 0.10000000149011612
+
+_SpecularAAThreshold ("SpecularAAThreshold", Range(0, 1)) = 0.20000000298023224
+
+_PPDMinSamples ("Min sample for POM", Range(1, 64)) = 5.0
+
+_PPDMaxSamples ("Max sample for POM", Range(1, 64)) = 15.0
+
+_PPDLodThreshold ("Start lod to fade out the POM effect", Range(0, 16)) = 5.0
+
+_PPDPrimitiveLength ("Primitive length for POM", Float) = 1.0
+
+_PPDPrimitiveWidth ("Primitive width for POM", Float) = 1.0
+
+_InvPrimScale ("Inverse primitive scale for non-planar POM", Vector) = (1,1,0,0)
+
+[Enum(Use Emissive Color, 0, Use Emissive Mask, 1)] _EmissiveColorMode ("Emissive color mode", Float) = 1.0
+
+[Enum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Planar, 4, Triplanar, 5, Same as Main layer, 6)] _UVEmissive ("UV Set for emissive", Float) = 0.0
+
+[Enum(WorldSpace, 0, ObjectSpace, 1)] _ObjectSpaceUVMappingEmissive ("Mapping space", Float) = 0.0
+
+_TexWorldScaleEmissive ("Scale to apply on world coordinate", Float) = 1.0
+
+_UVMappingMaskEmissive ("_UVMappingMaskEmissive", Color) = (1,0,0,0)
+
+_EmissionColor ("Color", Color) = (1,1,1,1)
+
+_TexWorldScale0 ("Tiling", Float) = 1.0
+
+_TexWorldScale1 ("Tiling", Float) = 1.0
+
+_TexWorldScale2 ("Tiling", Float) = 1.0
+
+_TexWorldScale3 ("Tiling", Float) = 1.0
+
+_InvTilingScale0 ("Inverse tiling scale = 2 / (abs(_BaseColorMap_ST.x) + abs(_BaseColorMap_ST.y))", Float) = 1.0
+
+_InvTilingScale1 ("Inverse tiling scale = 2 / (abs(_BaseColorMap_ST.x) + abs(_BaseColorMap_ST.y))", Float) = 1.0
+
+_InvTilingScale2 ("Inverse tiling scale = 2 / (abs(_BaseColorMap_ST.x) + abs(_BaseColorMap_ST.y))", Float) = 1.0
+
+_InvTilingScale3 ("Inverse tiling scale = 2 / (abs(_BaseColorMap_ST.x) + abs(_BaseColorMap_ST.y))", Float) = 1.0
+
+[Enum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Planar, 4, Triplanar, 5)] _UVBase0 ("UV Set for base0", Float) = 0.0
+
+[Enum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Planar, 4, Triplanar, 5)] _UVBase1 ("UV Set for base1", Float) = 0.0
+
+[Enum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Planar, 4, Triplanar, 5)] _UVBase2 ("UV Set for base2", Float) = 0.0
+
+[Enum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Planar, 4, Triplanar, 5)] _UVBase3 ("UV Set for base3", Float) = 0.0
+
+_UVMappingMask0 ("_UVMappingMask0", Color) = (1,0,0,0)
+
+_UVMappingMask1 ("_UVMappingMask1", Color) = (1,0,0,0)
+
+_UVMappingMask2 ("_UVMappingMask2", Color) = (1,0,0,0)
+
+_UVMappingMask3 ("_UVMappingMask3", Color) = (1,0,0,0)
+
+[Enum(UV0, 0, UV1, 1, UV2, 2, UV3, 3)] _UVDetail0 ("UV Set for detail0", Float) = 0.0
+
+[Enum(UV0, 0, UV1, 1, UV2, 2, UV3, 3)] _UVDetail1 ("UV Set for detail1", Float) = 0.0
+
+[Enum(UV0, 0, UV1, 1, UV2, 2, UV3, 3)] _UVDetail2 ("UV Set for detail2", Float) = 0.0
+
+[Enum(UV0, 0, UV1, 1, UV2, 2, UV3, 3)] _UVDetail3 ("UV Set for detail3", Float) = 0.0
+
+_UVDetailsMappingMask0 ("_UVDetailsMappingMask0", Color) = (1,0,0,0)
+
+_UVDetailsMappingMask1 ("_UVDetailsMappingMask1", Color) = (1,0,0,0)
+
+_UVDetailsMappingMask2 ("_UVDetailsMappingMask2", Color) = (1,0,0,0)
+
+_UVDetailsMappingMask3 ("_UVDetailsMappingMask3", Color) = (1,0,0,0)
+
+[ToggleUI] _LinkDetailsWithBase0 ("LinkDetailsWithBase0", Float) = 1.0
+
+[ToggleUI] _LinkDetailsWithBase1 ("LinkDetailsWithBase1", Float) = 1.0
+
+[ToggleUI] _LinkDetailsWithBase2 ("LinkDetailsWithBase2", Float) = 1.0
+
+[ToggleUI] _LinkDetailsWithBase3 ("LinkDetailsWithBase3", Float) = 1.0
+
+_MainTex ("Albedo", 2D) = "white" { }
+
+_Color ("Color", Color) = (1,1,1,1)
+
+_Cutoff ("Alpha Cutoff", Range(0, 1)) = 0.5
+
+[ToggleUI] _SupportDecals ("Support Decals", Float) = 1.0
+
+[ToggleUI] _ReceivesSSR ("Receives SSR", Float) = 1.0
+
+[ToggleUI] _AddPrecomputedVelocity ("AddPrecomputedVelocity", Float) = 0.0
+
+[ToggleUI] _RayTracing ("Ray Tracing (Preview)", Float) = 0.0
+
+unity_Lightmaps ("unity_Lightmaps", 2DArray) = "" { }
+
+unity_LightmapsInd ("unity_LightmapsInd", 2DArray) = "" { }
+
+unity_ShadowMasks ("unity_ShadowMasks", 2DArray) = "" { }
+
+}
+SubShader {
+ Tags { "RenderPipeline" = "HDRenderPipeline" "RenderType" = "HDLitShader" }
+ Pass {
+ Name "GBuffer"
+  Tags { "LIGHTMODE" = "GBuffer" "RenderPipeline" = "HDRenderPipeline" "RenderType" = "HDLitShader" }
+ ZTest Off
+ Cull Off
+  GpuProgramID 157582
+}
+ Pass {
+ Name "MotionVectors"
+  Tags { "LIGHTMODE" = "MOTIONVECTORS" "RenderPipeline" = "HDRenderPipeline" "RenderType" = "HDLitShader" }
+ Cull Off
+  GpuProgramID 326022
+}
+ Pass {
+ Name "ShadowCaster"
+  Tags { "LIGHTMODE" = "SHADOWCASTER" "RenderPipeline" = "HDRenderPipeline" "RenderType" = "HDLitShader" }
+ ZClip Off
+ Cull Off
+  GpuProgramID 350334
+}
+ Pass {
+ Name "DepthOnly"
+  Tags { "LIGHTMODE" = "DepthOnly" "RenderPipeline" = "HDRenderPipeline" "RenderType" = "HDLitShader" }
+ Cull Off
+  GpuProgramID 396378
+}
+}
+SubShader {
+ Tags { "RenderPipeline" = "HDRenderPipeline" }
+}
+Fall back "Hidden/HDRP/FallbackError"
+CustomEditor "UnityEditor.Rendering.HighDefinition.LayeredLitGUI"
+}

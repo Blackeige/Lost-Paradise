@@ -1,0 +1,3 @@
+Unity ZIP preparation stopped: Unity ZIP entry exceeds 536870912 bytes: LostParadiseV011DEMO/LostParadise_Data/sharedassets0.assets.resS
+
+Some Unity assets could not be exported. See unity/_report.json for exact missing resource names and per-object errors; include sibling .resS/.resource files in a ZIP.
